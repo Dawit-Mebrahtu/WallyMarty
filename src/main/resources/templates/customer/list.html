@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{common/masterlayout}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage/index.css}" />
+    <title>Customer Registration - Browse List of Customers</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <div>
+            <span style="font-size: 1.5em">List of All Registered Customers</span>
+            <span style="float:right;">
+                <a class="btn btn-outline-success btn-lg" href="/customers/new">Register a New Customer</a>
+            </span>
+        </div>
+        <p>&nbsp;</p>
+        <table class="table table-hover">
+            <thead>
+                <tr >
+                    <th scope="col">#</th>
+                    <th scope="col">Customer Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact Phone Number</th>
+                    <th scope="col">Date of birth</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer,iterStat : ${customers}" th:onclick="@{document.location='/customers/edit/{id}'(id=${customer.id})}">
+                    <th scope="row" th:text="${iterStat.count}"></th>
+                    <td th:text="${customer.customerNumber}"></td>
+                    <td th:text="${customer.name}"></td>
+                    <td th:text="${customer.contactPhoneNumber}"></td>
+                    <td th:text="${customer.dateOfBirth}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+    
+</body>
+</html>

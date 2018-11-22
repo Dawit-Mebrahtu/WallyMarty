@@ -1,0 +1,14 @@
+
+#tip{
+	display: none;
+}
+
+#contactPhoneNumber:focus + span {
+	display:block;
+	color: gray;
+}
+
+#dateOfBirth:focus + span {
+	display:block;
+	color: gray;
+}
